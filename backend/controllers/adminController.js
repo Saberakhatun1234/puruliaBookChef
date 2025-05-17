@@ -142,7 +142,7 @@ const addDoctor = async (req, res) => {
     await newDoctor.save();
     res.json({ success: true, message: "Chef Added" });
   } catch (error) {
-    console.log(error);
+    console.log(error)
     res.json({ success: false, message: error.message });
   }
 };

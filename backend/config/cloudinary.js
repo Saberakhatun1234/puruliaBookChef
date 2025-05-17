@@ -11,17 +11,22 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
 import { v2 as cloudinary } from 'cloudinary';
 
 const connectCloudinary = async () => {
+    try {
+        cloudinary.config({
+            cloud_name: process.env.CLOUDINARY_NAME,
+            api_key: process.env.CLOUDINARY_API_KEY,
+            api_secret: process.env.CLOUDINARY_SECRET_KEY
+        });
 
-    cloudinary.config({
-        cloud_name: process.env.CLOUDINARY_NAME,
-        api_key: process.env.CLOUDINARY_API_KEY,
-        api_secret: process.env.CLOUDINARY_SECRET_KEY
-    });
+        console.log(process.env.CLOUDINARY_API_KEY)
+        console.log("✅ Cloudinary Connected Successfully");
 
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 export default connectCloudinary;
